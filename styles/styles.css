@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'HarmonyOS Sans';
+    src: url('../fonts/HarmonyOS_Sans/HarmonyOS_Sans_Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Source Han Sans CN';
+    src: url('../fonts/SourceHanSansCN/SourceHanSansCN-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Source Han Serif CN';
+    src: url('../fonts/SourceHanSerifCN/SourceHanSerifCN-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Source Han Serif CN', serif;
+    font-weight: 900;
+    -webkit-text-stroke: 0.3px;
+    text-stroke: 0.3px;
+}
+body {
+    font-family: 'HarmonyOS Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+p {
+    text-indent: 2em;
+}
+
+.author-signature {
+    text-align: right;
+}
