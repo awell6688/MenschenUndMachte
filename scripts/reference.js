@@ -102,3 +102,29 @@ function showReference(num, event) {
 function hideReference() {
     document.getElementById('reference-popup').style.display = 'none';
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const referenceDots = document.querySelectorAll(".reference-dot");
+    const popup = document.getElementById("reference-popup");
+    const popupText = document.getElementById("reference-text");
+    const closeBtn = popup.querySelector(".close-btn");
+
+    referenceDots.forEach(dot => {
+        dot.addEventListener("click", () => {
+            const refId = dot.getAttribute("data-ref");
+            const refContent = document.getElementById(`ref-${refId}`).innerText;
+            popupText.innerText = refContent;
+            popup.style.display = "block";
+        });
+    });
+
+    closeBtn.addEventListener("click", () => {
+        popup.style.display = "none";
+    });
+
+    document.addEventListener("click", (event) => {
+        if (!popup.contains(event.target) && !event.target.classList.contains("reference-dot")) {
+            popup.style.display = "none";
+        }
+    });
+});
