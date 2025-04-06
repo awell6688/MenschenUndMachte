@@ -44,6 +44,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const popup = document.getElementById("reference-popup");
         popup.style.display = "none";
     };
+
+    // 替换点击外部关闭功能
+    document.addEventListener('click', function(event) {
+        const popup = document.getElementById('reference-popup');
+        const target = event.target;
+        
+        // 检查弹出层是否显示
+        if (popup && popup.style.display === 'flex') {
+            // 检查点击是否在弹出层或其子元素外部
+            if (!popup.contains(target) && 
+                !target.classList.contains('reference-dot') && 
+                !target.closest('.reference-dot') && 
+                !target.closest('.reference-content')) { // 确保检测到弹出层内容和引用标记
+                hideReference();
+            }
+        }
+    }, true); // 使用捕获阶段，确保事件优先处理
 });
 
 function showReference(num, event) {
@@ -91,7 +108,7 @@ function showReference(num, event) {
     }
     if (left < 10) left = 10;
     if (left + popupRect.width > viewportWidth - 10) {
-        left = viewportWidth - popupRect.width - 10;
+        left = viewportWidth - 10;
     }
     
     // 应用最终位置
@@ -102,29 +119,3 @@ function showReference(num, event) {
 function hideReference() {
     document.getElementById('reference-popup').style.display = 'none';
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    const referenceDots = document.querySelectorAll(".reference-dot");
-    const popup = document.getElementById("reference-popup");
-    const popupText = document.getElementById("reference-text");
-    const closeBtn = popup.querySelector(".close-btn");
-
-    referenceDots.forEach(dot => {
-        dot.addEventListener("click", () => {
-            const refId = dot.getAttribute("data-ref");
-            const refContent = document.getElementById(`ref-${refId}`).innerText;
-            popupText.innerText = refContent;
-            popup.style.display = "block";
-        });
-    });
-
-    closeBtn.addEventListener("click", () => {
-        popup.style.display = "none";
-    });
-
-    document.addEventListener("click", (event) => {
-        if (!popup.contains(event.target) && !event.target.classList.contains("reference-dot")) {
-            popup.style.display = "none";
-        }
-    });
-});
