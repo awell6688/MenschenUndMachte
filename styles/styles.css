@@ -12,10 +12,10 @@
 }
 @font-face {
     font-family: 'Source Han Serif CN';
-    src: local('Source Han Serif CN Medium'),
+    src: url('../fonts/SourceHanSerifCN/SourceHanSerifCN-Medium.otf') format('opentype'),
+         local('Source Han Serif CN Medium'),
          local('思源宋体 Medium'),
-         local('思源宋體 Medium'),
-         url('../fonts/SourceHanSerifCN/SourceHanSerifCN-Medium.otf') format('opentype');
+         local('思源宋體 Medium');
     font-weight: 500;
     font-style: normal;
 }
@@ -53,7 +53,7 @@ p {
 /* 标题样式 */
 h1 {
     font-size: 2em;
-    font-weight: bold;
+    font-weight: 900;
     margin-bottom: 1em;
     padding-bottom: 0.5em;
     border-bottom: 1px solid #eee;
